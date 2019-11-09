@@ -1,5 +1,5 @@
 # EZms.Core
-This is the Core part of the EZms CMS platform
+This is the Core part of the EZms CMS platform, for more information on using EZms as a whole, please to to [EZms](https://github.com/Floydan/EZms) or read the [EZms wiki](https://github.com/Floydan/EZms/wiki)
 
 To enable the UI you need to follow the instructions for the [EZms.UI](https://github.com/Floydan/EZms.UI/) project
 
