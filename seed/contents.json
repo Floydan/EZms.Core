@@ -1,0 +1,10 @@
+﻿[
+    {
+        "Name": "Home",
+        "UrlSlug": "/",
+        "ModelAsJson": "{\"Header\":\"Välkommen\",\"MainContent\":\"Här kan du se vårat utbud av produkter som är tillgängliga för uthyrning\",\"Model\":null,\"ModelAsJson\":null,\"Id\":0,\"ParentId\":null,\"Parent\":null,\"Name\":null,\"UrlSlug\":null,\"ContentType\":\"Rentals.Infrastructure.Models.PageTypes.StartPage\",\"ContentTypeGuid\":\"bd4367d4-facd-4062-8bff-8ba73218d725\",\"ModelType\":\"Rentals.Infrastructure.Models.PageTypes.StartPage, Rentals, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\",\"Order\":0,\"Published\":false,\"PublishedVersion\":0,\"SavedVersion\":0,\"CreatedAt\":\"0001-01-01T00:00:00\",\"UpdatedAt\":\"0001-01-01T00:00:00\",\"PublishedAt\":\"0001-01-01T00:00:00\"}",
+        "Order": 0,
+        "Published": true,
+        "ContentTypeGuid": "bd4367d4-facd-4062-8bff-8ba73218d725"
+    }
+]

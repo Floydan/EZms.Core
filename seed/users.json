@@ -1,0 +1,18 @@
+[
+    {
+        "Id": "316b49cd-eca8-4ee4-956e-680759a4ab15",
+        "UserName": "admin@ezms.com",
+        "NormalizedUserName": "ADMIN@EZMS.COM",
+        "Email": "admin@ezms.com",
+        "NormalizedEmail": "ADMIN@EZMS.COM",
+        "EmailConfirmed": false,
+        "PasswordHash": null,
+        "SecurityStamp": "05fdae5b-8c13-4a3f-8254-fd64c405d0fd",
+        "PhoneNumber": null,
+        "PhoneNumberConfirmed": false,
+        "TwoFactorEnabled": false,
+        "LockoutEnd": null,
+        "LockoutEnabled": false,
+        "AccessFailedCount": 0
+    }
+]

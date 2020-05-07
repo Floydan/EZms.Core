@@ -1,0 +1,14 @@
+[
+    {
+        "Id": "6cac1784-75d8-462a-a2da-2fc28a478ab8",
+        "Name": "EZmsAdmin",
+        "NormalizedName": "EZMSADMIN",
+        "ConcurrencyStamp": "43dc061e-5363-418d-9e9c-faa5e2df8dc9"
+    },
+    {
+        "Id": "64a0cd2f-6129-4dce-b1bf-c1b9318c69c7",
+        "Name": "EZmsEditor",
+        "NormalizedName": "EZMSEDITOR",
+        "ConcurrencyStamp": "214cac28-8ac8-41ed-bf9e-49466b57d954"
+    }
+]
