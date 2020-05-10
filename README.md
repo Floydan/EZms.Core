@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/bb2dc452725cae41123a/maintainability)](https://codeclimate.com/github/Floydan/EZms.Core/maintainability)
+
 # EZms.Core
 This is the Core part of the EZms CMS platform, for more information on using EZms as a whole, please to to [EZms](https://github.com/Floydan/EZms) or read the [EZms wiki](https://github.com/Floydan/EZms/wiki)
 
