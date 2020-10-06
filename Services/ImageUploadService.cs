@@ -20,7 +20,8 @@ namespace EZms.Core.Services
         {
             var container = _blobContainerFactory.GetContainer();
             var mappedType = _mimeMappingService.Map(fileName);
-            var blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath($"{mappedType.FileType}/{fileName}"));
+            var fullPath = Path.Combine(mappedType.FileType, fileName).Replace(@"\", "/").Replace("//", "/");
+            var blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath(fullPath));
             var exists = await blob.ExistsAsync();
             if (!exists)
             {
@@ -30,14 +31,15 @@ namespace EZms.Core.Services
                 await blob.SetPropertiesAsync();
             }
 
-            return $"/{mappedType.FileType}/{fileName}";
+            return fullPath;
         }
 
         public async Task<string> UploadImage(string fileName, Stream stream)
         {
             var container = _blobContainerFactory.GetContainer();
             var mappedType = _mimeMappingService.Map(fileName);
-            var blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath($"{mappedType.FileType}/{fileName}"));
+            var fullPath = Path.Combine(mappedType.FileType, fileName).Replace(@"\", "/").Replace("//", "/");
+            var blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath(fullPath));
             var exists = await blob.ExistsAsync();
             if (!exists)
             {
@@ -49,14 +51,15 @@ namespace EZms.Core.Services
             else
             {
                 fileName = DateTime.UtcNow.Ticks + Path.GetExtension(fileName);
-                blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath($"{mappedType.FileType}/{fileName}"));
+                fullPath = Path.Combine(mappedType.FileType, fileName).Replace(@"\", "/").Replace("//", "/");
+                blob = container.GetBlockBlobReference(_blobContainerFactory.TransformPath(fullPath));
                 await blob.UploadFromStreamAsync(stream);
                 blob.Properties.ContentType = mappedType.ContentType;
 
                 await blob.SetPropertiesAsync();
             }
 
-            return $"/{mappedType.FileType}/{fileName}";
+            return fullPath;
         }
     }
 

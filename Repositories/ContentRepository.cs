@@ -7,6 +7,7 @@ using EZms.Core.Extensions;
 using EZms.Core.Models;
 using EZms.Core.Routing;
 using Microsoft.EntityFrameworkCore;
+using Remotion.Linq.Clauses;
 using Rentals.Infrastructure.Routing;
 
 namespace EZms.Core.Repositories
@@ -36,12 +37,26 @@ namespace EZms.Core.Repositories
             return typedContent;
         }
 
+        public async Task<T> Get<T>(ContentReference contentReference) where T : IContent
+        {
+            if (ContentReference.IsNullOrEmpty(contentReference))
+                return default(T);
+            return await Get<T>(contentReference.Id);
+        }
+
         public async Task<Content> GetContent(int? id)
         {
             if (!id.HasValue) return null;
             var content = await _context.Content.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
 
             return content;
+        }
+
+        public async Task<Content> GetContent(ContentReference contentReference)
+        {
+            if (ContentReference.IsNullOrEmpty(contentReference))
+                return null;
+            return await GetContent(contentReference.Id);
         }
 
         public async Task<IEnumerable<Content>> GetContentWithParents(int? id)
@@ -331,8 +346,10 @@ namespace EZms.Core.Repositories
     public interface IContentRepository
     {
         Task<T> Get<T>(int? id) where T : IContent;
+        Task<T> Get<T>(ContentReference contentReference) where T : IContent;
         Task<T> Get<T>(int? parentId, string slug) where T : IContent;
         Task<Content> GetContent(int? id);
+        Task<Content> GetContent(ContentReference contentReference);
         Task<IEnumerable<T>> GetAll<T>() where T : IContent;
         Task<IEnumerable<Content>> GetAll();
         Task<IEnumerable<IContent>> GetChildren(int? parentId);

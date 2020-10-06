@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace EZms.Core.Models
 {
-    [TypeConverter(typeof(ContentReferenceConverter<ContentReference>))]
+    [TypeConverter(typeof(ContentReferenceConverter))]
     [Serializable]
     public class ContentReference : IComparable, IComparable<ContentReference>, IEquatable<ContentReference>
     {
@@ -30,7 +30,7 @@ namespace EZms.Core.Models
         public static readonly ContentReference EmptyReference = new ContentReference();
 
         /// <summary>
-        /// Returns a <see cref="T:EPiServer.Core.ContentReference" /> that references the current Content.
+        /// Returns a <see cref="T:EZms.Core.ContentReference" /> that references the current Content.
         /// </summary>
         public static readonly ContentReference SelfReference = new ContentReference(0, -1);
 
@@ -53,7 +53,7 @@ namespace EZms.Core.Models
         /// <summary>
         /// Initialize a new <see cref="T:EZms.Core.Models.ContentReference" /> from a string in the format
         ///     contentID[_workID] or -
-        /// throws EPiServerException on invalid argument
+        /// throws Exception on invalid argument
         /// </summary>
         /// <param name="complexReference">The string containing content information</param>
         /// <exception cref="T:System.Exception">
@@ -78,7 +78,7 @@ namespace EZms.Core.Models
             _versionId = versionId;
         }
 
-        public virtual int CompareTo(ContentReference other)
+        public int CompareTo(ContentReference other)
         {
             return _contentId.CompareTo(other._contentId);
         }
@@ -192,10 +192,10 @@ namespace EZms.Core.Models
         }
 
         /// <summary>
-        /// Parses the specified string to a <see cref="T:EPiServer.Core.ContentReference" /> instance.
+        /// Parses the specified string to a <see cref="T:EZms.Core.ContentReference" /> instance.
         /// </summary>
         /// <param name="s">The string that should be parsed.</param>
-        /// <returns>A <see cref="T:EPiServer.Core.ContentReference" /> instance if the string could be parsed; otherwise an exception in thrown.</returns>
+        /// <returns>A <see cref="T:EZms.Core.ContentReference" /> instance if the string could be parsed; otherwise an exception in thrown.</returns>
         public static ContentReference Parse(string s)
         {
             if (!TryParse(s, out var result))

@@ -46,6 +46,13 @@ namespace EZms.Core.Loaders
                 });
         }
 
+        public override async Task<T> Get<T>(ContentReference contentReference)
+        {
+            if (ContentReference.IsNullOrEmpty(contentReference))
+                return default(T);
+            return await Get<T>(contentReference.Id, contentReference.WorkId == 0 ? (int?)null : contentReference.WorkId);
+        }
+
         public override async Task<IContent> GetContent(int id, int? version = null)
         {
             return await EZmsInMemoryCache.GetOrCreateAsync($"DefaultContentLoader:GetContent({id}, {version})",
@@ -66,6 +73,13 @@ namespace EZms.Core.Loaders
                     if (content == null || !content.Published) return null;
                     return (IContent)content;
                 });
+        }
+
+        public override async Task<IContent> GetContent(ContentReference contentReference)
+        {
+            if (ContentReference.IsNullOrEmpty(contentReference))
+                return null;
+            return await GetContent(contentReference.Id, contentReference.WorkId == 0 ? (int?)null : contentReference.WorkId);
         }
 
         public override async Task<IEnumerable<T>> GetChildren<T>(int id)

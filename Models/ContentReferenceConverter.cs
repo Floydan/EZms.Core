@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using AutoMapper;
 
 namespace EZms.Core.Models
 {
-    public class ContentReferenceConverter<T> : TypeConverter where T : ContentReference
+    public class ContentReferenceConverter : TypeConverter
     {
         /// <summary>
         /// Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context.

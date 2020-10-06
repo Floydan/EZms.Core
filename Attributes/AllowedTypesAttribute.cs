@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EZms.Core.Helpers;
 using EZms.Core.Models;
 using EZms.Core.Validation.Internal;
 
@@ -16,14 +17,14 @@ namespace EZms.Core.Attributes
         private Type[] _allowedTypes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:EPiServer.DataAnnotations.AllowedTypesAttribute" /> class.
+        /// Initializes a new instance of the <see cref="T:AllowedTypesAttribute" /> class.
         /// </summary>
         public AllowedTypesAttribute() : this(typeof(IContentData))
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:EPiServer.DataAnnotations.AllowedTypesAttribute" /> class.
+        /// Initializes a new instance of the <see cref="T:AllowedTypesAttribute" /> class.
         /// </summary>
         /// <param name="allowedTypes">The allowed types. The null value is replaced with IContentData.</param>
         public AllowedTypesAttribute(params Type[] allowedTypes)
@@ -32,7 +33,7 @@ namespace EZms.Core.Attributes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:EPiServer.DataAnnotations.AllowedTypesAttribute" /> class.
+        /// Initializes a new instance of the <see cref="T:AllowedTypesAttribute" /> class.
         /// </summary>
         /// <param name="allowedTypes">The allowed types. The null value is replaced with IContentData.</param>
         /// <param name="restrictedTypes">The restricted types</param>
@@ -42,7 +43,7 @@ namespace EZms.Core.Attributes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:EPiServer.DataAnnotations.AllowedTypesAttribute" /> class.
+        /// Initializes a new instance of the <see cref="T:AllowedTypesAttribute" /> class.
         /// </summary>
         /// <param name="allowedTypes">The allowed types. The null value is replaced with IContentData.</param>
         /// <param name="restrictedTypes">The restricted types</param>
@@ -57,10 +58,10 @@ namespace EZms.Core.Attributes
 
         /// <summary>Gets or sets the allowed types.</summary>
         /// <remarks>
-        ///   <para>Setting value null is treated as all <see cref="T:EPiServer.Core.IContentData" /> types are allowed.</para>
+        ///   <para>Setting value null is treated as all <see cref="T:EZms.Core.IContentData" /> types are allowed.</para>
         ///   <para>
-        ///     <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.RestrictedTypes" /> has presence over <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.AllowedTypes" /> meaning that if the instance is assignable to any type in <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.RestrictedTypes" /> then will it not be allowed
-        ///       regardless if the type is assignable to any type in <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.AllowedTypes" />.
+        ///     <see cref="P:EZms.Core.AllowedTypesAttribute.RestrictedTypes" /> has presence over <see cref="P:EZms.Core.AllowedTypesAttribute.AllowedTypes" /> meaning that if the instance is assignable to any type in <see cref="P:EZms.Core.AllowedTypesAttribute.RestrictedTypes" /> then will it not be allowed
+        ///       regardless if the type is assignable to any type in <see cref="P:EZms.Core.AllowedTypesAttribute.AllowedTypes" />.
         ///       </para>
         /// </remarks>
         /// <value>The allowed types.</value>
@@ -78,8 +79,8 @@ namespace EZms.Core.Attributes
         /// Gets types which the property is not allowed to contain.
         /// </summary>
         /// <remarks>
-        /// <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.RestrictedTypes" /> has presence over <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.AllowedTypes" /> meaning that if the instance is assignable to any type in <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.RestrictedTypes" /> then will it not be allowed
-        ///     regardless if the type is assignable to any type in <see cref="P:EPiServer.DataAnnotations.AllowedTypesAttribute.AllowedTypes" />.
+        /// <see cref="P:EZms.Core.AllowedTypesAttribute.RestrictedTypes" /> has presence over <see cref="P:EZms.Core.AllowedTypesAttribute.AllowedTypes" /> meaning that if the instance is assignable to any type in <see cref="P:EZms.Core.AllowedTypesAttribute.RestrictedTypes" /> then will it not be allowed
+        ///     regardless if the type is assignable to any type in <see cref="P:EZms.Core.AllowedTypesAttribute.AllowedTypes" />.
         ///     </remarks>
         public Type[] RestrictedTypes
         {
@@ -90,6 +91,8 @@ namespace EZms.Core.Attributes
         /// <summary>Gets or sets types format suffix.</summary>
         /// <value>The types format suffix.</value>
         public string TypesFormatSuffix { get; set; }
+
+
 
         /// <inheritdoc />
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)

@@ -7,7 +7,9 @@ namespace EZms.Core.Loaders
     public abstract class ContentLoader : IContentLoader
     {
         public abstract Task<T> Get<T>(int id, int? version = null) where T : IContent;
+        public abstract Task<T> Get<T>(ContentReference contentReference) where T : IContent;
         public abstract Task<IContent> GetContent(int id, int? version = null);
+        public abstract Task<IContent> GetContent(ContentReference contentReference);
 
         public abstract Task<IEnumerable<T>> GetChildren<T>(int id) where T : IContent;
 
